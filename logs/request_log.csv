@@ -1,0 +1,84 @@
+2025-06-26 20:54:34.094711,GET /index.php?id=1 OR 1=1 HTTP/1.1,malicious
+2025-06-26 21:21:07.654235,POST /login HTTP/1.1
+Host: site.com
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=123
+,benign
+2025-06-26 21:24:46.551475,POST /login HTTP/1.1
+Host: example.com
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=123456
+,benign
+2025-06-26 21:28:52.830678,import requests
+
+http_payload = "GET /home HTTP/1.1"
+
+res = requests.post("http://127.0.0.1:8080/analyze"  json={
+    "http_request": http_payload
+})
+
+print(res.json())
+,benign
+2025-06-26 21:37:10.571378,import altair as alt
+
+st.altair_chart(
+    alt.Chart(df).mark_bar().encode(
+        x='label:N' 
+        y='count():Q' 
+        color='label:N'
+    ).properties(title="Attack Distribution") 
+    use_container_width=True
+)
+,benign
+2025-06-26 21:46:11.131155,GET /search?q=<script>alert(1)</script> HTTP/1.1
+,malicious
+2025-06-26 21:55:35.543509,GET /home HTTP/1.1,benign
+2025-06-26 21:57:20.988327,import requests
+
+http_payload = "GET /product.php?id=5 UNION SELECT * FROM users HTTP/1.1"  # SQLi
+
+res = requests.post("http://127.0.0.1:8080/analyze"  json={
+    "http_request": http_payload
+})
+
+print(res.json())
+,benign
+2025-06-26 21:57:59.819745,GET /product.php?id=5 UNION SELECT * FROM users HTTP/1.1,benign
+2025-06-26 22:03:38.215759,GET /home HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0
+
+,benign
+2025-06-26 22:06:20.836366,GET /home HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0
+
+
+,benign
+2025-06-26 22:13:43.496476,GET /home HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0
+
+,benign
+2025-06-26 22:16:57.327712,GET /home HTTP/1.1 Host: example.com User-Agent: Mozilla/5.0  ,benign
+2025-06-26 22:17:26.339200,GET /index.php?id=1 OR 1=1 HTTP/1.1 Host: test.com ,malicious
+2025-06-26 22:18:04.380006,GET /index.POST /login HTTP/1.1 Host: safe-site.com Content-Type: application/x-www-form-urlencoded  username=bhumika&password=123456 php?id=1 OR 1=1 HTTP/1.1 Host: test.com ,benign
+2025-06-27 01:17:13.353110,POST /admin HTTP/1.1 Host: test.com Content-Type: application/x-www-form-urlencoded Cookie: sessionid=xyz  username=admin'--&password=123 ,benign
+2025-06-27 01:22:58.883887,,benign
+2025-06-27 01:23:01.005567,,benign
+2025-06-27 01:27:11.121086,username=admin&password=123,benign
+2025-06-27 01:27:24.952578,username=admin&password=123,benign
+2025-06-27 01:29:49.861286,username=admin&password=123,benign
+2025-06-27 01:30:58.447401,username=admin&password=123,benign
+2025-06-27 01:34:58.555779,username=admin&password=123,benign
+2025-06-27 01:35:03.923423,username=admin&password=123,benign
+2025-06-27 01:35:06.241529,username=admin&password=123,benign
+2025-06-27 01:35:08.145978,username=admin&password=123,benign
+2025-06-27 01:35:09.965632,username=admin&password=123,benign
+2025-06-27 01:35:12.301694,username=admin&password=123,benign
+2025-06-27 01:35:16.944494,username=admin&password=123,benign
+2025-06-27 01:35:17.725231,username=admin&password=123,benign
+2025-06-27 01:35:19.590215,username=admin&password=123,benign
+2025-06-27 01:35:20.384004,username=admin&password=123,benign
